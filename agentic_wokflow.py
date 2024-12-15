@@ -262,3 +262,39 @@ wait_for_agent_alias_status(
     agentAliasId=agentAliasId,
     targetStatus='PREPARED'
 )
+
+bedrock_agent = boto3.client(service_name = 'bedrock-agent', region_name = '')
+
+describe_agent_response = bedrock_agent.get_agent(
+    agentId=agentId
+)
+
+print(json.dumps(describe_agent_response, indent=4, default=str))
+print(describe_agent_response['agent']['instruction'])
+
+# Knowledge Base
+get_knowledge_base_response = bedrock_agent.get_knowledge_base(
+    knowledgeBaseId = knowledgeBaseId # from env variable 
+)
+print(json.dumps(get_knowledge_base, indent=4, default=str))
+
+bedrock_agent.prepare_agent(
+    agentId=agentId
+)
+
+wait_for_agent_status(
+    agentId=agentId,
+    targetStatus='PREPARED'
+)
+
+bedrock_agent.update_agent_alias(
+    agentId=agentId,
+    agentAliasId=agentAliasId,
+    agentAliasName='MyAgentAlias'
+)
+
+wait_for_agent_alias_status(
+    agentId=agentId,
+    agentAliasId=agentAliasId,
+    targetStatus='PREPARED'
+)
