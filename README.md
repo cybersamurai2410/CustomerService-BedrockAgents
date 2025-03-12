@@ -1,5 +1,5 @@
 # Serverless Agentic Workflow with RAG for Customer Service using AWS Bedrock
-Implemented customer service agentic workflow using foundational model via AWS Bedrock Boto3 SDK and integrated tools via AWS Lambda functions with safety guardrails and knowledge bases for context retrieval. 
+Implemented customer service agentic workflow via AWS Boto3 SDK using foundational model via AWS Bedrock and integrated tools via AWS Lambda functions with safety guardrails and knowledge bases for context retrieval. 
 - Action groups wrapping the function schema.
 - Tools using Lambda functions.
 - Guardrails to prevent leaking sensitive information from generated responses. 
